@@ -1,3 +1,5 @@
+venv
+
 login.py
 map.txt
 resultado.txt
@@ -9,4 +11,6 @@ test.cpp
 
 .vscode
 
-venv
+1.dmy
+f_C.txt
+f_P.txt

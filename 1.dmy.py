@@ -1,8 +1,11 @@
 import random
+import time
+
+inicio_tiempo = time.time()
 
 ## Generador progresivo de diamesaño, normal y bisiesto 
 ini_year = 2000
-finish   = "16102001"
+finish   = "16102010"
 finish_y = int(finish[-4:])     # Extracción de texto a numero int 
 finish_m = int(finish[3:5])     # Recordar el uso de las posiciones
 finish_d = int(finish[0:2])     # para sacar el dato requerido :v
@@ -27,7 +30,6 @@ days    = [0,0,0,0,0,0,0,0,0,0,0,0]
 pass_nm  = []
 
 
-
 ## Bucle anidado buscando dia a dia en year-month-day hasta finish
 for y in range(ini_year, finish_y+1): 
     b = (y % 4 == 0 and y % 100 != 0) or (y % 400 == 0) # Almacenar en b la condicional boleana
@@ -49,7 +51,7 @@ for y in range(ini_year, finish_y+1):
             # resultados.append(str(i).zfill(2))                  # zfill(2) agrega ceros hasta tener 2 dígitos
         
         if m == 12:
-            print(f"{m:02d}| -UwU- : ", random.sample(pass_nm, 10))
+            print(f"{m:02d}| -UwU- : ", random.sample(pass_nm, 4))
 
         #if m==2 and b==True:
         #    print("bisieto")
@@ -68,6 +70,21 @@ for y in range(ini_year, finish_y+1):
         #for d in range(days[m-1]):
 
     print("\n-------\n")
+
+fin_tiempo = time.time()
+tiempo_total = fin_tiempo - inicio_tiempo
+
+print("\n==============================")
+print(f"Tiempo de ejecución: {tiempo_total:.6f} segundos")
+print(f"Tiempo de ejecución: {tiempo_total * 1000:.2f} milisegundos")
+print("==============================")
+
+# Guardar archivo
+with open("f_P.txt", "w") as archivo:
+    for fecha in pass_nm:
+        archivo.write(fecha + "\n")
+
+print(f"\nArchivo 'f_P.txt' guardado con {len(pass_nm)} fechas.")
 
 #print("UWU'nt\n")
 #print(f"dia:  {day}")
